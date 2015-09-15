@@ -13,22 +13,12 @@
       <div class="row">
         <div class="col-md-12 navStyle">
           <span><a href="index.html">Home</a></span>
-        </div><!--end nav column-->
+        </div>
       </div><!--end nav row-->
-    
-      <div class="row row-eq-height" ng-controller="GitNCtrl">
-        <div class="col-md-3 sideStyle">
-        </div><!--end sidebar column-->
-
-        <div class="col-md-9 mainStyle" ng-view>
-        </div><!--end main column-->
-
-      </div><!--end row/controller-->
     </div><!--end container-->
 
-    <!-- // <script src="lib/bower_components/requirejs/require.js"></script> -->
-    <!-- // <script src="main-built.js"></script> -->
-
+    <div ng-view></div>
+    
     <script data-main="app/require-config" src="lib/bower_components/requirejs/require.js"></script>
   </body>
 </html>
