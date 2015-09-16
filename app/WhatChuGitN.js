@@ -3,24 +3,19 @@ define(function(require) {
   var route = require("angularRoute");
   var filter = require("angularFilter");
   var firebase = require("firebase");
+  var angularFire = require("angularFire");
 
   return angular
     .module(
       "WhatChuGitNapp",
       [
-        "ngRoute", 
+        "ngRoute",
+        "angularFire",
         "WhatChuGitNapp.WhichCtrl",
         "WhatChuGitNapp.WhatChuWantCtrl"
       ]
     )
     .config(["$routeProvider", function($routeProvider) {
-      $routeProvider
-        .when("/what", {
-          templateUrl: "partials/what.html",
-          controller: "WhatChuWantCtrl"
-        })
-        .otherwise({ 
-          redirectTo: "/which" 
-        });
+      $routeProvider.otherwise({redirectTo:"/which"});
     }]);
 });
