@@ -9,17 +9,18 @@ define(function(require) {
       "WhatChuGitNapp",
       [
         "ngRoute", 
-        "firebase", 
-        "angularFilter"
+        "WhatChuGitNapp.WhichCtrl",
+        "WhatChuGitNapp.WhatChuWantCtrl"
       ]
     )
     .config(["$routeProvider", function($routeProvider) {
-      $routeProvider.
-        when('/which', {
-          templateUrl: '.partials/which.html',
-          controller: 'GitNCtrl'
-        }).otherwise({ 
-          redirectTo: "/" 
+      $routeProvider
+        .when("/what", {
+          templateUrl: "partials/what.html",
+          controller: "WhatChuWantCtrl"
+        })
+        .otherwise({ 
+          redirectTo: "/which" 
         });
     }]);
 });
