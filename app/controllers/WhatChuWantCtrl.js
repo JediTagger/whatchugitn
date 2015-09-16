@@ -1,5 +1,6 @@
 define(function(require) {
   var angular = require("angular");
+  var firebase = require("firebase");
   var angularFire = require("angularFire");
 
   angular
@@ -11,21 +12,20 @@ define(function(require) {
       });
     }])
 
-    .controller("WhatChuWantCtrl", ["$scope", "$firebaseArray"
+    .controller("WhatChuWantCtrl", ["$scope", "$firebaseArray",
       function($scope, $firebaseArray) {
 
         var ref = new Firebase("https://whatchugitn.firebaseio.com/Turner");
+        var data = $firebaseArray(new Firebase("https://whatchugitn.firebaseio.com/Turner"));
         var user = ref.getAuth().facebook.displayName;
-        var data;
+
+        console.log("firebaseArray", data);
 
         ref.orderByChild("wanted_by").equalTo(user).on("value", function(snapshot) {
-          
-          data = snapshot.val();
-          console.log(data);
+          console.log("just mine object", snapshot.val());
         });
 
         $scope.name = ref.getAuth().facebook.displayName;
-        // $scope.description = data
 
       }
     ]);

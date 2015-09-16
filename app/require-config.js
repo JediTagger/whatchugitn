@@ -14,7 +14,7 @@ require.config({
   shim: {
     'angular': {'exports': 'angular'},
     'angularFilter': ['angular'],
-    'angularFire': ['angular'],
+    'angularFire': ['angular', 'firebase'],
     'angularRoute': ['angular'],
     'bootstrap': ['jquery'],
     'firebase': {

@@ -6,6 +6,7 @@ define(function(require) {
     var WhatChuGitN = require("WhatChuGitN");
     var WhichCtrl = require("controllers/WhichCtrl");
     var WhatChuWantCtrl = require("controllers/WhatChuWantCtrl");
+    var angularFire = require("angularFire");
 
     var $html = angular.element(document.getElementsByTagName('body')[0]);
     angular.element($html).ready(function() {

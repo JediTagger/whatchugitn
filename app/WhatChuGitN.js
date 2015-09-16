@@ -10,7 +10,7 @@ define(function(require) {
       "WhatChuGitNapp",
       [
         "ngRoute",
-        "angularFire",
+        "firebase",
         "WhatChuGitNapp.WhichCtrl",
         "WhatChuGitNapp.WhatChuWantCtrl"
       ]
