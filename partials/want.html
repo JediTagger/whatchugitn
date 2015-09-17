@@ -1,1 +1,21 @@
-<div>{{name}}'s want list.</div>
+<img src="{{profileImage}}">
+<div>{{displayName}}'s want list.</div>
+<div>
+  Name: <input type="text" ng-model="newName">
+  Description: <input type="text" ng-model="newDescription">
+  Image URL: <input type="text" ng-model="newImage_url">
+  Website address where it can be found: <input type="text" ng-model="newThing_url">
+  <button ng-click="addNewThing()">Add To Your List</button>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" ng-repeat="thing in userThings">
+      <h3>{{thing.name}}</h3>
+      <div>{{thing.description}}</div>
+      <img src="{{thing.image_url}}" width="300px" alt="picture here">
+      <div>Click <a href="{{thing.thing_url}}">HERE</a> for where to get it.</div>
+      <button ng-click="removeThing(thing)">Remove From Your List</button>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,9 @@ define(function(require) {
       function($scope) {
         var ref = new Firebase("https://whatchugitn.firebaseio.com/");
 
+          
         $scope.name = ref.getAuth().facebook.displayName;
+        $scope.profileImage = ref.getAuth().facebook.profileImageURL;
 
       }
     ]);
