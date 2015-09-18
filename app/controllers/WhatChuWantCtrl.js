@@ -11,18 +11,17 @@ define(function(require) {
         controller: "WhatChuWantCtrl"
       });
     }])
-
     .controller("WhatChuWantCtrl", ["$scope", "$firebaseArray", "$firebaseObject",
       function($scope, $firebaseArray, $firebaseObject) {
         //get a firebase reference
         var ref = new Firebase("https://whatchugitn.firebaseio.com/Turner");
-        //get the user's name from Facebook authentication
-        var user = ref.getAuth().facebook.displayName;
-        //get only the things that the user wants
+        //get the user's id from Facebook authentication
+        var userID = ref.getAuth().facebook.id;
+        //get only the things this user wants
         var thingRef = new Firebase("https://whatchugitn.firebaseio.com/Turner")
                       .orderByChild("wanted_by")
-                      .equalTo(user);
-        //make an array of the things the user wants
+                      .equalTo(userID);
+        //make an array of the things this user wants
         $scope.userThings = $firebaseArray(thingRef);
         //get the name and profile image from Facebook authentication
         $scope.displayName = ref.getAuth().facebook.displayName;
@@ -34,7 +33,7 @@ define(function(require) {
         $scope.newThing_url = "";
 
         $scope.addNewThing = function() {
-          //get the data from the form
+          //get the new data from the form
           var newThing = {
             name: $scope.newName,
             description: $scope.newDescription,
@@ -60,4 +59,4 @@ define(function(require) {
 
       }//end main function
     ]);//end controller
-});//end define
+});//end require

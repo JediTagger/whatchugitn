@@ -9,14 +9,17 @@ define(function(require) {
         controller: "WhichCtrl"
       });
     }])
-
-    .controller("WhichCtrl", ["$scope",
-      function($scope) {
+    .controller("WhichCtrl", ["$scope", "$firebaseArray", "$firebaseObject",
+      function($scope, $firebaseArray, $firebaseObject) {
         var ref = new Firebase("https://whatchugitn.firebaseio.com/");
-
-          
+        //get the user name and picture from Facebook
         $scope.name = ref.getAuth().facebook.displayName;
-        $scope.profileImage = ref.getAuth().facebook.profileImageURL;
+        $scope.profileImageURL = ref.getAuth().facebook.profileImageURL;
+
+        var userID = ref.getAuth().facebook.id;
+
+        var memberRef = new Firebase("https://whatchugitn.firebaseio.com/Turner/Members/" + userID);
+        memberRef.child('profile_image_url').set($scope.profileImageURL);
 
       }
     ]);

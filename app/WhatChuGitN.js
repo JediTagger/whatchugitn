@@ -4,6 +4,7 @@ define(function(require) {
   var filter = require("angularFilter");
   var firebase = require("firebase");
   var angularFire = require("angularFire");
+  var q = require("q");
 
   return angular
     .module(
@@ -12,7 +13,8 @@ define(function(require) {
         "ngRoute",
         "firebase",
         "WhatChuGitNapp.WhichCtrl",
-        "WhatChuGitNapp.WhatChuWantCtrl"
+        "WhatChuGitNapp.WhatChuWantCtrl",
+        "WhatChuGitNapp.WhatChuGitNCtrl"
       ]
     )
     .config(["$routeProvider", function($routeProvider) {
