@@ -12,50 +12,32 @@ define(function(require) {
         controller: "WhatChuGitNCtrl"
       });
     }])
-    .controller("WhatChuGitNCtrl", ["$scope", "$firebaseArray", "$firebaseObject", "$q",
-      function($scope, $firebaseArray, $firebaseObject, $q) {
+    .controller("WhatChuGitNCtrl", ["$scope", "$firebaseArray",
+      function($scope, $firebaseArray) {
+        $scope.userThings = [];
 
-        $scope.displayMembers = [];
+        //get this from the factory or somewhere
+        var userID = "123";
+        
+        $scope.whosGitnIt = "";
 
-        function getMembers() {
-          return $q(function(resolve, reject) {
-            $.ajax({
-              url: "https://whatchugitn.firebaseio.com/Turner/Members/.json"
-            })
-            .done(function(response) {
-              resolve(response);
-            })
-            .fail(function(xhr, status, error) {
-              reject(error);
-            });
-          });//promise resolution
-        }//end getMemebers function
+        //if getting_it === "" show gitnit button
+        //else show Members.getting_it.profile_image_url is gitnit
 
-        getMembers()
-          .then(function(promiseResolutionData) {
-            $scope.displayMembers = promiseResolutionData;
-          },function(error) {
-            console.log("error is: ", error);
-          });
+        var ref = new Firebase("https://whatchugitn.firebaseio.com/Turner")
+              .orderByChild("wanted_by")
+              .equalTo(userID);
+        //make an array of the things this user wants
+        $scope.userThings = $firebaseArray(ref);
+
+        $scope.gitn = function(thing) {
+          var ref = new Firebase("https://whatchugitn.firebaseio.com/Turner/Members/");
+          var userID = ref.getAuth().facebook.id;
+          var memberThing = new Firebase("https://whatchugitn.firebaseio.com/Turner/" + thing.$id);
+          memberThing.child('getting_it').set(userID);
+          // then change button to Members.getting_it.profile_image_url is gitnit
+        };//end gitin function
 
       }//end main function
     ]);//end controller
 });//end require
-
-        //This didn't work and Steve doens't know why.  It's they way he would have written it.
-        //get a firebase reference
-        // var memberRef = new Firebase("https://whatchugitn.firebaseio.com/Turner/Members");
-        // var userID = memberRef.getAuth().facebook.id;
-
-        // memberRef.on("value", function(snapshot) {
-        //   var members = snapshot.val();
-
-        //   $scope.displayMembers = [];
-
-        //   for (var key in members) {
-        //     if (key !== userID) {
-        //       $scope.displayMembers.push(members[key].profile_image_url);
-        //     }
-        //   }
-        //   console.log($scope.displayMembers);
-        // });

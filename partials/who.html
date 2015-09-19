@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      Click on the person to see what they want and commit to what you'll get them.
+    </div>
+  </div><!-- end profile row -->
+  <div class="row">
+    <div class="col-md-4" ng-repeat="member in displayMembers">
+      <a href="#/gitn">
+        <div>
+          <img src="{{member.profile_image_url}}" width="150px" alt="picture here">
+          <div>
+            {{member.name}}
+          </div>
+        </div>
+      </a>
+    </div>
+  </div><!-- end profile row -->
+</div><!-- end container -->

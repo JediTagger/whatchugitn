@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4" ng-repeat="member in displayMembers">
-      <img src="{{member.profile_image_url}}" width="300px" alt="picture here">
+    <div class="col-md-12" ng-repeat="thing in userThings">
+      <h3>{{thing.name}}</h3>
+      <div>{{thing.description}}</div>
+      <img src="{{thing.image_url}}" width="300px" alt="picture here">
+      <div>Click <a href="{{thing.thing_url}}">HERE</a> for where to get it.</div>
+      <button ng-click="gitn(thing)">I'm GitNit!</button>
     </div>
   </div>
 </div>

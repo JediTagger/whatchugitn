@@ -14,6 +14,7 @@ define(function(require) {
         "firebase",
         "WhatChuGitNapp.WhichCtrl",
         "WhatChuGitNapp.WhatChuWantCtrl",
+        "WhatChuGitNapp.WhatChuGitNWhoCtrl",
         "WhatChuGitNapp.WhatChuGitNCtrl"
       ]
     )

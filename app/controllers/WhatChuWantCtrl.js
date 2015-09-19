@@ -23,7 +23,7 @@ define(function(require) {
                       .equalTo(userID);
         //make an array of the things this user wants
         $scope.userThings = $firebaseArray(thingRef);
-        //get the name and profile image from Facebook authentication
+        //get & set the name and profile image from Facebook authentication
         $scope.displayName = ref.getAuth().facebook.displayName;
         $scope.profileImage = ref.getAuth().facebook.profileImageURL;
         //declare variables
@@ -39,7 +39,7 @@ define(function(require) {
             description: $scope.newDescription,
             image_url: $scope.newImage_url,
             thing_url: $scope.newThing_url,
-            wanted_by: user,
+            wanted_by: userID,
             getting_it: ""
           };
           //add the new data to firebase
