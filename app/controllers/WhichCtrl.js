@@ -17,11 +17,12 @@ define(function(require) {
         $scope.name = ref.getAuth().facebook.displayName;
         $scope.profileImageURL = ref.getAuth().facebook.profileImageURL;
         var userID = ref.getAuth().facebook.id;
-        //get a firebase reference for the members
-        var memberRef = new Firebase("https://whatchugitn.firebaseio.com/Turner/Members/" + userID);
-        //save the user's name and profile image url to firebase for use when others log in
-        memberRef.child('profile_image_url').set($scope.profileImageURL);
-        memberRef.child('name').set($scope.name);
+        //get a firebase reference for the family
+        var familyRef = new Firebase("https://whatchugitn.firebaseio.com/family/" + userID);
+        //save the user's information to firebase for use when others log in
+        familyRef.child('profile_image_url').set($scope.profileImageURL);
+        familyRef.child('name').set($scope.name);
+        familyRef.child('userID').set(userID);
       }
     ]);
 });

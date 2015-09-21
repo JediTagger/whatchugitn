@@ -3,34 +3,16 @@ define(function(require) {
 
   angular
   .module("WhatChuGitNapp.storage", [])
-  .factory('storage', function() {
-    var userID = "";
+  .factory('storage', function($location) {
+    var memberID = "";
     return {
-      addUserID: function(value) {
-        userID = value;
-        console.log("userID added");
+      addMemberID: function(value) {
+        memberID = value;
+        $location.url("/gitn");
       },
-      getUserID: function() {
-        console.log(userID);
+      getMemberID: function() {
+        return memberID;
       }
     };
   });
 });
-
-//example from stackoverflow
-
-// define([
-//     'app'
-// ],
-
-// function(app) {
-//     return app.factory('serviceExample', function ( ) {
-
-//           return {
-//               nameOfMethod: function () {
-//                   return "Is this working";
-//               }
-//           }
-//         }
-//     );
-// });

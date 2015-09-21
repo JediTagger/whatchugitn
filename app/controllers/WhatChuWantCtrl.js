@@ -14,11 +14,11 @@ define(function(require) {
     .controller("WhatChuWantCtrl", ["$scope", "$firebaseArray", "$firebaseObject",
       function($scope, $firebaseArray, $firebaseObject) {
         //get a firebase reference
-        var ref = new Firebase("https://whatchugitn.firebaseio.com/Turner");
+        var ref = new Firebase("https://whatchugitn.firebaseio.com/things");
         //get the user's id from Facebook authentication
         var userID = ref.getAuth().facebook.id;
         //get only the things this user wants
-        var thingRef = new Firebase("https://whatchugitn.firebaseio.com/Turner")
+        var thingRef = new Firebase("https://whatchugitn.firebaseio.com/things")
                       .orderByChild("wanted_by")
                       .equalTo(userID);
         //make an array of the things this user wants
@@ -52,7 +52,7 @@ define(function(require) {
         };//end addNewThing function
 
         $scope.removeThing = function(thing) {
-          var ref = new Firebase("https://whatchugitn.firebaseio.com/Turner/" + thing.$id);
+          var ref = new Firebase("https://whatchugitn.firebaseio.com/things/" + thing.$id);
           thing = $firebaseObject(ref);
           thing.$remove();
         };//end removeThing function

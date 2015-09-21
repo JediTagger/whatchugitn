@@ -13,12 +13,9 @@ define(function(require) {
     }])
     .controller("WhatChuGitNWhoCtrl", ["$scope", "$q", "storage",
       function($scope, $q, storage) {
-        $scope.addUserID = function(id) {
-          storage.addUserID(id);
-        };
-
-        $scope.getUserID = function() {
-          storage.getUserID();
+        //let the dom access the storage factory
+        $scope.addMemberID = function(id) {
+          storage.addMemberID(id);
         };
         // get a firebase reference 
         var ref = new Firebase("https://whatchugitn.firebaseio.com");
@@ -26,10 +23,10 @@ define(function(require) {
         var userID = ref.getAuth().facebook.id;
         $scope.displayMembers = [];
         // return a promise of all family members
-        function getMembers() {
+        function getFamily() {
           return $q(function(resolve, reject) {
             $.ajax({
-              url: "https://whatchugitn.firebaseio.com/Turner/Members/.json"
+              url: "https://whatchugitn.firebaseio.com/family/.json"
             })
             .done(function(response) {
               resolve(response);
@@ -40,7 +37,7 @@ define(function(require) {
           });//promise resolution
         }//end getMemebers function
         //call the function & filter out the user so they can't see what they're gitn!
-        getMembers()
+        getFamily()
           .then(function(data) {
             for (var key in data) {
               if (key !== userID) {
@@ -50,10 +47,14 @@ define(function(require) {
           },function(error) {
             console.log("error is: ", error);
           });
-
       }//end main function
     ]);//end controller
 });//end require
+
+
+
+
+
 
 
         //This didn't work and Steve doesn't know why.  It's the way he would have written it.

@@ -12,43 +12,29 @@ define(function(require) {
         controller: "WhatChuGitNCtrl"
       });
     }])
-    .factory('storage', function () {
-      var userID = "123";
-      return {
-        addUserID: function(value) {
-          userID = value;
-        },
-        getUserID: function() {
-          return userID;
-        }
-      };
-    })
     .controller("WhatChuGitNCtrl", ["$scope", "$firebaseArray", "storage",
       function($scope, $firebaseArray, storage) {
+        var memberID = storage.getMemberID();
+        console.log("GitNCtrl says memberID is: ", memberID);
         $scope.userThings = [];
-
-        var userID = storage.getUserID();
-        
-        $scope.whosGitnIt = "";
+        // $scope.whosGitnIt = "";
 
         //if getting_it === "" show gitnit button
         //else show "Members.getting_it.profile_image_url" is gitnit
 
-        var ref = new Firebase("https://whatchugitn.firebaseio.com/Turner")
+        var ref = new Firebase("https://whatchugitn.firebaseio.com/things")
               .orderByChild("wanted_by")
-              .equalTo(userID);
+              .equalTo(memberID);
         //make an array of the things this user wants
         $scope.userThings = $firebaseArray(ref);
-
+        //commit to getting a thing for the family member
         $scope.gitn = function(thing) {
-          var ref = new Firebase("https://whatchugitn.firebaseio.com/Turner/Members/");
+          var ref = new Firebase("https://whatchugitn.firebaseio.com/");
           var userID = ref.getAuth().facebook.id;
-          var memberThing = new Firebase("https://whatchugitn.firebaseio.com/Turner/" + thing.$id);
+          var memberThing = new Firebase("https://whatchugitn.firebaseio.com/things/" + thing.$id);
           memberThing.child('getting_it').set(userID);
           // then change button to Members.getting_it.profile_image_url is gitnit
         };//end gitin function
-
-        console.log("userID is: ", userID);
 
 
       }//end main function
