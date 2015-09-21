@@ -15,7 +15,8 @@ define(function(require) {
         "WhatChuGitNapp.WhichCtrl",
         "WhatChuGitNapp.WhatChuWantCtrl",
         "WhatChuGitNapp.WhatChuGitNWhoCtrl",
-        "WhatChuGitNapp.WhatChuGitNCtrl"
+        "WhatChuGitNapp.WhatChuGitNCtrl",
+        "WhatChuGitNapp.storage"
       ]
     )
     .config(["$routeProvider", function($routeProvider) {

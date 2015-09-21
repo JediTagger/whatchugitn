@@ -6,6 +6,8 @@
   </div><!-- end profile row -->
   <div class="row">
     <div class="col-md-4" ng-repeat="member in displayMembers">
+      <button ng-click="addUserID(member)">add userID</button>
+      <button ng-click="getUserID()">log userID</button>
       <a href="#/gitn">
         <div>
           <img src="{{member.profile_image_url}}" width="150px" alt="picture here">
