@@ -31,7 +31,7 @@ define(function(require) {
         $scope.newDescription = "";
         $scope.newImage_url = "";
         $scope.newThing_url = "";
-
+        //add an item to the user's wish list
         $scope.addNewThing = function() {
           //get the new data from the form
           var newThing = {
@@ -49,14 +49,13 @@ define(function(require) {
           $scope.newDescription = "";
           $scope.newImage_url = "";
           $scope.newThing_url = "";
-        };//end addNewThing function
-
+        };
+        //remove an item from the user's wish list
         $scope.removeThing = function(thing) {
           var ref = new Firebase("https://whatchugitn.firebaseio.com/things/" + thing.$id);
           thing = $firebaseObject(ref);
           thing.$remove();
-        };//end removeThing function
-
+        };
       }//end main function
     ]);//end controller
 });//end require

@@ -14,29 +14,35 @@ define(function(require) {
     }])
     .controller("WhatChuGitNCtrl", ["$scope", "$firebaseArray", "storage",
       function($scope, $firebaseArray, storage) {
+        //get the family member's userID from storage
         var memberID = storage.getMemberID();
-        console.log("GitNCtrl says memberID is: ", memberID);
-        $scope.userThings = [];
-        // $scope.whosGitnIt = "";
-
-        //if getting_it === "" show gitnit button
-        //else show "Members.getting_it.profile_image_url" is gitnit
-
-        var ref = new Firebase("https://whatchugitn.firebaseio.com/things")
+        //declare variables
+        $scope.memberThingsArray = [];
+        //get a Firebase reference for the things the family member wants
+        var memberThingsRef = new Firebase("https://whatchugitn.firebaseio.com/things")
               .orderByChild("wanted_by")
               .equalTo(memberID);
-        //make an array of the things this user wants
-        $scope.userThings = $firebaseArray(ref);
+        //make an array of the things the family member wants
+        $scope.memberThingsArray = $firebaseArray(memberThingsRef);
+        //get a general Firebase reference to get user's information
+        var ref = new Firebase("https://whatchugitn.firebaseio.com/");
+        $scope.userID = ref.getAuth().facebook.id;
+        var userDisplayName = ref.getAuth().facebook.displayName;
+        var userProfileImageURL = ref.getAuth().facebook.profileImageURL;
         //commit to getting a thing for the family member
-        $scope.gitn = function(thing) {
-          var ref = new Firebase("https://whatchugitn.firebaseio.com/");
-          var userID = ref.getAuth().facebook.id;
-          var memberThing = new Firebase("https://whatchugitn.firebaseio.com/things/" + thing.$id);
-          memberThing.child('getting_it').set(userID);
-          // then change button to Members.getting_it.profile_image_url is gitnit
-        };//end gitin function
-
-
+        $scope.gitnit = function(thing) {
+          var memberThingRef = new Firebase("https://whatchugitn.firebaseio.com/things/" + thing.$id);
+          memberThingRef.child('gitnit_id').set($scope.userID);
+          memberThingRef.child('gitnit_name').set(userDisplayName);
+          memberThingRef.child('gitnit_profile_image_url').set(userProfileImageURL);
+        };
+        //remove committment for getting a thing
+        $scope.oops = function(thing) {
+          var memberThingRef = new Firebase("https://whatchugitn.firebaseio.com/things/" + thing.$id);
+          memberThingRef.child('gitnit_id').set("");
+          memberThingRef.child('gitnit_name').set("");
+          memberThingRef.child('gitnit_profile_image_url').set("");
+        };
       }//end main function
     ]);//end controller
 });//end require

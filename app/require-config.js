@@ -29,6 +29,7 @@ requirejs(
   }
 );
 
+// the way to authenticate first before doing anything else then load the page with pic etc.
 // require(
 //   ["dependencies", "authentication", "navigation"], 
 //   function(deps, authentication, nav) {

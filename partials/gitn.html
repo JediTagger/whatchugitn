@@ -1,11 +1,25 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12" ng-repeat="thing in userThings">
+    <div class="col-md-4" ng-repeat="thing in memberThingsArray">
       <h3>{{thing.name}}</h3>
       <div>{{thing.description}}</div>
       <img src="{{thing.image_url}}" width="300px" alt="picture here">
       <div>Click <a href="{{thing.thing_url}}">HERE</a> for where to get it.</div>
-      <button ng-click="gitn(thing)">I'm GitNit!</button>
-    </div>
-  </div>
-</div>
+      <!-- if no one has commited to getting the gift yet then a button giving the option to get it shows -->
+      <div ng-if="thing.gitnit_id === ''">
+        <button ng-click="gitnit(thing)">I'm GitNit!</button>
+      </div>
+      <!-- if someone has committed to getting the gift already then their picture and name show -->
+      <div ng-if="thing.gitnit_id !== ''">
+        <img src="{{thing.gitnit_profile_image_url}}">
+        <div>
+          {{thing.gitnit_name}}'s GiNit!
+        </div>
+      </div>
+      <!-- if the current user is the one that has committed to getting the gift then the option to renege also shows -->
+      <div ng-if="thing.gitnit_id === userID">
+        <button ng-click="oops(thing)">Oops! Nevermind...<button>
+      </div>
+    </div><!-- end repeat -->
+  </div><!-- end row -->
+</div><!-- end container -->

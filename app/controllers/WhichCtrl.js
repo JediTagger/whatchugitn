@@ -13,16 +13,16 @@ define(function(require) {
       function($scope) {
         //get a firebase reference for the app
         var ref = new Firebase("https://whatchugitn.firebaseio.com/");
-        //get the user name and picture from Facebook
+        //get the user's information from Facebook
         $scope.name = ref.getAuth().facebook.displayName;
         $scope.profileImageURL = ref.getAuth().facebook.profileImageURL;
         var userID = ref.getAuth().facebook.id;
-        //get a firebase reference for the family
-        var familyRef = new Firebase("https://whatchugitn.firebaseio.com/family/" + userID);
-        //save the user's information to firebase for use when others log in
-        familyRef.child('profile_image_url').set($scope.profileImageURL);
-        familyRef.child('name').set($scope.name);
-        familyRef.child('userID').set(userID);
+        //get a Firebase reference for the user
+        var userRef = new Firebase("https://whatchugitn.firebaseio.com/family/" + userID);
+        //save the user's information to Firebase for use when others log in
+        userRef.child('profile_image_url').set($scope.profileImageURL);
+        userRef.child('name').set($scope.name);
+        userRef.child('userID').set(userID);
       }
     ]);
 });
