@@ -1,5 +1,6 @@
 define(function(require) {
   var angular = require("angular");
+  // var firebase = require("firebase");
 
   angular
     .module("WhatChuGitNapp.WhichCtrl", ["ngRoute"])

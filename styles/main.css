@@ -87,4 +87,18 @@ ul {
 li {
   font-size: 1.7em; }
 
+.stay {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background-color: white;
+  z-index: 2; }
+
+.hack-245 {
+  margin-top: 245px; }
+
+.hack-56 {
+  margin-top: 56px; }
+
 /*# sourceMappingURL=main.css.map */

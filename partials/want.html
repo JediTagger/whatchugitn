@@ -1,16 +1,17 @@
-<div class="navStyle">
-  <span class="floatLeft"><a href="#/want" class="btn btn-success btn-lg active" role="button">WhatChaWant?</a></span>
-  <span class="floatRight"><a href="#/who" class="btn btn-danger btn-lg active" role="button">WhatChaGitN?</a></span>
-</div>
-<div class="clear">
+<div class="stay">
+  <div class="navStyle">
+    <span class="floatLeft"><a href="#/want" class="btn btn-success btn-lg active" role="button">WhatChaWant?</a></span>
+    <span class="floatRight"><a href="#/who" class="btn btn-danger btn-lg active" role="button">WhatChaGitN?</a></span>
+  </div>
+  <div class="clear"></div>
+
+  <div class="centered bottom-margin-30">
+    <img src="{{profileImage}}" alt="picture here" class="round">
+    <h1>{{displayName}}'s wish list.</h1>
+  </div>
 </div>
 
-<div class="centered bottom-margin-30">
-  <img src="{{profileImage}}" alt="picture here" class="round">
-  <h1>{{displayName}}'s wish list.</h1>
-</div>
-
-<div class="container">
+<div class="container hack-245">
   <div class="row"><!-- total row -->
     <div class="col-md-2 want-side-bar"><!--side bar-->
       <div class="top-and-bottom-padding">
@@ -28,7 +29,7 @@
         <div class="col-md-4 shadow border left-bottom-margin want-divs" ng-repeat="thing in userThings">
 
           <h3>{{thing.name}}</h3>
-          <div class="overflow">{{thing.description}}</div>
+          <div class="bottom-margin-10">{{thing.description}}</div>
           <img src="{{thing.image_url}}" class="width-100 bottom-margin-10" alt="picture here">
           <div class="bottom-margin-10">Click <a href="{{thing.thing_url}}">HERE</a> for where to get it.</div>
           <button ng-click="removeThing(thing)" class="btn btn-primary btn-block active">Remove From Wish List</button>

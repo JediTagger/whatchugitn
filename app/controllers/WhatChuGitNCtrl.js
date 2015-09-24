@@ -14,7 +14,7 @@ define(function(require) {
     }])
     .controller("WhatChuGitNCtrl", ["$scope", "$firebaseArray", "$routeParams",
       function($scope, $firebaseArray, $routeParams) {
-        //declare variables
+        //declare variable
         $scope.memberThingsArray = [];
         //get a Firebase reference for the things the family member wants
         var memberThingsRef = new Firebase("https://whatchugitn.firebaseio.com/things")
@@ -22,7 +22,7 @@ define(function(require) {
               .equalTo($routeParams.userID);
         //make an array of the things the family member wants
         $scope.memberThingsArray = $firebaseArray(memberThingsRef);
-        //get a general Firebase reference to get user's information
+        //get a general Firebase reference and get user's information
         var ref = new Firebase("https://whatchugitn.firebaseio.com/");
         $scope.userID = ref.getAuth().facebook.id;
         var userDisplayName = ref.getAuth().facebook.displayName;

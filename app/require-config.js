@@ -23,18 +23,17 @@ require.config({
   }
 });
 
+//original, this works
 requirejs(
   ["authentication", "dependencies"],
   function(authentication, deps) {
   }
 );
 
-// the way to authenticate first before doing anything else then load the page with pic etc.
+//steve's example from music history step by step
 // require(
 //   ["dependencies", "authentication", "navigation"], 
 //   function(deps, authentication, nav) {
-
-
 //     authentication.github()
 //       .then(function() {
 //         require(["core_list"], function() {});
@@ -42,6 +41,19 @@ requirejs(
 //       .fail(function(error) {
 //         console.log("error", error);
 //       });
+//   }
+// );
 
+// promise version gets stuck on WhichCtrl.js
+// require(
+//   ["authentication", "firebase"], 
+//   function(authentication) {
+//     authentication.FBlogin()
+//       .then(function() {
+//         require(["dependencies"], function() {});
+//       })
+//       .fail(function(error) {
+//         console.log("error", error);
+//     });
 //   }
 // );
