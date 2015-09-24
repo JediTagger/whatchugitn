@@ -1,25 +1,21 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 profile-image-which">
-      <img src="{{profileImageURL}}">
+      <img src="{{profileImageURL}}" alt="picture here" class="top-margin round">
     </div>
   </div><!--end profile image row-->
-  <div class="row">
-    <div class="col-md-12 name-which">
-      Greetings {{name}}!
-    </div>
+  <div class="row bottom-margin-30">
+    <h1 class="col-md-12 name-which">
+      Merry Christmas {{name}}!
+    </h1>
   </div><!--end name row-->
 
   <div class="row row-eq-height">
-    <a href="#/want">
-      <div class="col-md-6 left-which">
-        WhatChuWant?
-      </div>
-    </a>
-    <a href="#/who">
-      <div class="col-md-6 right-which">
-        WhatChuGitN?
-      </div>
-    </a>
-  </div><!--end WhatChu row-->
+    <div class="col-md-6">
+      <a href="#/want" class="btn btn-success active left-which" role="button">WhatChaWant?</a>
+    </div>
+    <div class="col-md-6">
+      <a href="#/who" class="btn btn-danger active right-which" role="button">WhatChaGitN?</a>
+    </div>
+  </div><!--end Which row-->
 </div><!--end container-->

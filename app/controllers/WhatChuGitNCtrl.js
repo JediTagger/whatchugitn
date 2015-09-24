@@ -7,21 +7,19 @@ define(function(require) {
   angular
     .module("WhatChuGitNapp.WhatChuGitNCtrl", ["ngRoute"])
     .config(["$routeProvider", function($routeProvider) {
-      $routeProvider.when("/gitn", {
+      $routeProvider.when("/gitn/:userID", {
         templateUrl: "partials/gitn.html",
         controller: "WhatChuGitNCtrl"
       });
     }])
-    .controller("WhatChuGitNCtrl", ["$scope", "$firebaseArray", "storage",
-      function($scope, $firebaseArray, storage) {
-        //get the family member's userID from storage
-        var memberID = storage.getMemberID();
+    .controller("WhatChuGitNCtrl", ["$scope", "$firebaseArray", "$routeParams",
+      function($scope, $firebaseArray, $routeParams) {
         //declare variables
         $scope.memberThingsArray = [];
         //get a Firebase reference for the things the family member wants
         var memberThingsRef = new Firebase("https://whatchugitn.firebaseio.com/things")
               .orderByChild("wanted_by")
-              .equalTo(memberID);
+              .equalTo($routeParams.userID);
         //make an array of the things the family member wants
         $scope.memberThingsArray = $firebaseArray(memberThingsRef);
         //get a general Firebase reference to get user's information

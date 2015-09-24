@@ -1,17 +1,29 @@
+<div class="navStyle">
+  <span class="floatLeft"><a href="#/want" class="btn btn-success btn-lg active" role="button">WhatChaWant?</a></span>
+  <span class="floatRight"><a href="#/who" class="btn btn-danger btn-lg active" role="button">WhatChaGitN?</a></span>
+</div>
+<div class="clear">
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      Click on the person to see what they want and commit to what you'll get them.
+      <h1>Click on a family member to...</h1>
+      <ul>
+        <li>see their wish list</li>
+        <li>see who's already committed to get items on their wish list</li>
+        <li>and commit to what you'll get them.</li>
+      </ul>
     </div>
-  </div><!-- end profile row -->
+  </div><!-- end instruction row -->
   <div class="row">
-    <div class="col-md-4" ng-repeat="member in displayMembers">
-      <div ng-click="addMemberID(member.userID)">
-        <img src="{{member.profile_image_url}}" width="150px" alt="picture here">
-        <div>
+    <div class="col-md-4 centered" ng-repeat="member in displayMembers">
+      <a href="#/gitn/{{member.userID}}">
+        <img src="{{member.profile_image_url}}" width="250px" alt="picture here" class="round">
+        <h4>
           {{member.name}}
-        </div>
-      </div>
-    </div>
+        </h4>
+      </a>
+    </div><!-- end repeat -->
   </div><!-- end profile row -->
 </div><!-- end container -->

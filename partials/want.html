@@ -1,21 +1,57 @@
-<img src="{{profileImage}}">
-<div>{{displayName}}'s wish list.</div>
-<div>
-  Name: <input type="text" ng-model="newName" autofocus>
-  Description: <input type="text" ng-model="newDescription">
-  Image URL: <input type="text" ng-model="newImage_url">
-  Website address where it can be found: <input type="text" ng-model="newThing_url">
-  <button ng-click="addNewThing()">Add To Your List</button>
+<div class="navStyle">
+  <span class="floatLeft"><a href="#/want" class="btn btn-success btn-lg active" role="button">WhatChaWant?</a></span>
+  <span class="floatRight"><a href="#/who" class="btn btn-danger btn-lg active" role="button">WhatChaGitN?</a></span>
+</div>
+<div class="clear">
+</div>
+
+<div class="centered bottom-margin-30">
+  <img src="{{profileImage}}" alt="picture here" class="round">
+  <h1>{{displayName}}'s wish list.</h1>
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-4" ng-repeat="thing in userThings">
-      <h3>{{thing.name}}</h3>
-      <div>{{thing.description}}</div>
-      <img src="{{thing.image_url}}" width="300px" alt="picture here">
-      <div>Click <a href="{{thing.thing_url}}">HERE</a> for where to get it.</div>
-      <button ng-click="removeThing(thing)">Remove From Your List</button>
-    </div>
-  </div>
-</div>
+  <div class="row"><!-- total row -->
+    <div class="col-md-2 want-side-bar"><!--side bar-->
+      <div class="top-and-bottom-padding">
+        Add a new item to your wish list!
+      </div>
+      Name: <input type="text" ng-model="newName" autofocus>
+      Description: <input type="text" ng-model="newDescription">
+      Image URL: <input type="text" ng-model="newImage_url">
+      Website address where it can be found: <input type="text" ng-model="newThing_url">
+      <button ng-click="addNewThing()" class="btn btn-primary btn-block top-and-bottom-margin active">Add To Wish List</button>
+    </div><!-- end side bar -->
+
+    <div class="col-md-10"><!-- main -->
+      <div class="row"><!-- list row -->
+        <div class="col-md-4 shadow border left-bottom-margin want-divs" ng-repeat="thing in userThings">
+
+          <h3>{{thing.name}}</h3>
+          <div class="overflow">{{thing.description}}</div>
+          <img src="{{thing.image_url}}" class="width-100" alt="picture here">
+          <div>Click <a href="{{thing.thing_url}}">HERE</a> for where to get it.</div>
+          <button ng-click="removeThing(thing)" class="btn btn-primary btn-block active">Remove From Wish List</button>
+          <button class="btn btn-primary btn-block active bottom-margin-10" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="false" aria-controls="{{$index}}">Edit</button>
+
+          <div class="collapse" id="{{$index}}">
+            <div class="well">
+              Name: <input type="text" ng-model="thing.name" style="display:block">
+              Description: <input type="text" ng-model="thing.description" style="display:block">
+              Image URL: <input type="text" ng-model="thing.image_url" style="display:block">
+              Website address where it can be found: <input type="text" ng-model="thing.thing_url" style="display:block">
+              <button ng-click="editThing(thing)" class="top-margin btn btn-primary active" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="false" aria-controls="{{$index}}">Save</button>
+            </div>
+          </div>
+
+        </div><!-- end repeat -->
+      </div><!-- end list row -->
+    </div><!-- end main -->
+  </div><!-- end total row -->
+</div><!-- end container -->
+
+
+
+
+
+

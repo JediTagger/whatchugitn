@@ -11,12 +11,8 @@ define(function(require) {
         controller: "WhatChuGitNWhoCtrl"
       });
     }])
-    .controller("WhatChuGitNWhoCtrl", ["$scope", "$q", "storage",
-      function($scope, $q, storage) {
-        //let the dom access the storage factory
-        $scope.addMemberID = function(id) {
-          storage.addMemberID(id);
-        };
+    .controller("WhatChuGitNWhoCtrl", ["$scope", "$q",
+      function($scope, $q) {
         // get a firebase reference 
         var ref = new Firebase("https://whatchugitn.firebaseio.com");
         //declare variables
