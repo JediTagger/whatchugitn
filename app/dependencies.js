@@ -8,7 +8,7 @@ define(function(require) {
     var WhatChuWantCtrl = require("controllers/WhatChuWantCtrl");
     var WhatChuGitNWhoCtrl = require("controllers/WhatChuGitNWhoCtrl");
     var WhatChuGitNCtrl = require("controllers/WhatChuGitNCtrl");
-    var storage = require("factories/storage");
+    // var storage = require("factories/storage"); no longer needed, keeping as an example
     var angularFire = require("angularFire");
     var q = require("q");
 

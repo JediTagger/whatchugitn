@@ -1,3 +1,4 @@
+//no longer using this, keeping as an example
 define(function(require) {
   var angular = require("angular");
 

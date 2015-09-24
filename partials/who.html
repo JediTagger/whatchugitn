@@ -6,7 +6,7 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="row bottom-margin-30">
     <div class="col-md-12">
       <h1>Click on a family member to...</h1>
       <ul>
@@ -17,9 +17,9 @@
     </div>
   </div><!-- end instruction row -->
   <div class="row">
-    <div class="col-md-4 centered" ng-repeat="member in displayMembers">
+    <div class="col-md-3 centered" ng-repeat="member in displayMembers">
       <a href="#/gitn/{{member.userID}}">
-        <img src="{{member.profile_image_url}}" width="250px" alt="picture here" class="round">
+        <img src="{{member.profile_image_url}}" width="150" alt="picture here" class="round">
         <h4>
           {{member.name}}
         </h4>
