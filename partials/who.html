@@ -1,12 +1,13 @@
 <div class="stay">
   <div class="navStyle">
     <span class="floatLeft"><a href="#/want" class="btn btn-success btn-lg active" role="button">WhatChaWant?</a></span>
+    <span class="centered"><a href="#/which" class="btn btn-info btn-lg active" role="button">Home</a></span>
     <span class="floatRight"><a href="#/who" class="btn btn-danger btn-lg active" role="button">WhatChaGitN?</a></span>
   </div>
   <div class="clear"></div>
 </div>
 
-<div class="container hack-56">
+<div class="container hack-66">
   <div class="row bottom-margin-30">
     <div class="col-md-12">
       <h1>Click on a family member to...</h1>
@@ -20,10 +21,12 @@
   <div class="row">
     <div class="col-md-3 centered" ng-repeat="member in displayMembers">
       <a href="#/gitn/{{member.userID}}">
-        <img src="{{member.profile_image_url}}" width="150" alt="picture here" class="round">
+        <img src="{{member.profile_image_url}}" alt="picture here" class="bigRound">
         <h4>
           {{member.name}}
         </h4>
+        <!-- if I've committed to get something for this family member then a check mark shows under their profile image and name -->
+        <i ng-if="member.check" class="fa fa-check-circle fa-2x" style="color:green"></i>
       </a>
     </div><!-- end repeat -->
   </div><!-- end profile row -->

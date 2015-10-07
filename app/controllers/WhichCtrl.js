@@ -1,6 +1,5 @@
 define(function(require) {
   var angular = require("angular");
-  // var firebase = require("firebase");
 
   angular
     .module("WhatChuGitNapp.WhichCtrl", ["ngRoute"])
@@ -10,8 +9,8 @@ define(function(require) {
         controller: "WhichCtrl"
       });
     }])
-    .controller("WhichCtrl", ["$scope",
-      function($scope) {
+    .controller("WhichCtrl", ["$scope", "$location",
+      function($scope, $location) {
         //get a firebase reference for the app
         var ref = new Firebase("https://whatchugitn.firebaseio.com/");
         //get the user's information from Facebook
@@ -24,6 +23,15 @@ define(function(require) {
         userRef.child('profile_image_url').set($scope.profileImageURL);
         userRef.child('name').set($scope.name);
         userRef.child('userID').set(userID);
-      }
-    ]);
-});
+
+        $scope.logOut = function() {
+          //get a Firebase reference for the app
+          var ref = new Firebase("https://whatchugitn.firebaseio.com");
+          //log out and redirect to "which" page
+          ref.unauth();
+          $location.path("/");
+        };//end logOut function
+
+      }//end main function
+    ]);//end controller
+});//end require

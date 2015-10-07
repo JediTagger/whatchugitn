@@ -11,12 +11,12 @@ define(function(require) {
         controller: "WhatChuGitNWhoCtrl"
       });
     }])
-    .controller("WhatChuGitNWhoCtrl", ["$scope", "$q",
-      function($scope, $q) {
+    .controller("WhatChuGitNWhoCtrl", ["$scope", "$q", "$firebaseArray",
+      function($scope, $q, $firebaseArray) {
         // get a firebase reference 
         var ref = new Firebase("https://whatchugitn.firebaseio.com");
         //declare variables
-        var userID = ref.getAuth().facebook.id;
+        $scope.myUserID = ref.getAuth().facebook.id;
         $scope.displayMembers = [];
         // return a promise of all family members
         function getFamily() {
@@ -31,18 +31,49 @@ define(function(require) {
               reject(error);
             });
           });//promise resolution
-        }//end getMemebers function
+        }//end getFamily function
         //call the function & filter out the user so they can't see what they're gitn!
         getFamily()
           .then(function(data) {
             for (var key in data) {
-              if (key !== userID) {
+              if (key !== $scope.myUserID) {
                 $scope.displayMembers.push(data[key]);
               }
             }
           },function(error) {
             console.log("error is: ", error);
           });
+        //return a promise of all things
+        function getThings() {
+          return $q(function(resolve, reject) {
+            $.ajax({
+              url: "https://whatchugitn.firebaseio.com/things/.json"
+            })
+            .done(function(response) {
+              resolve(response);
+            })
+            .fail(function(xhr, status, error) {
+              reject(error);
+            });
+          });//promise resolution
+        }//end getThings function
+        //call the function and add a "check" property to the members for whom
+        //I've committed to getting something.
+        getThings()
+          .then(function(data) {
+            for (var key in data) {
+              if (data[key].gitnit_id === $scope.myUserID) {
+                for (var i = 0; i < $scope.displayMembers.length; i++) {
+                  if ($scope.displayMembers[i].userID === data[key].wanted_by) {
+                    $scope.displayMembers[i].check = true; 
+                  } 
+                }
+              }
+            }
+          },function(error) {
+            console.log("error is: ", error);
+          });
+
       }//end main function
     ]);//end controller
 });//end require

@@ -75,6 +75,7 @@ define(function(require) {
             }
           }
         };
+
       }//end main function
     ]);//end controller
 });//end require

@@ -1,16 +1,17 @@
 <div class="stay">
   <div class="navStyle">
     <span class="floatLeft"><a href="#/want" class="btn btn-success btn-lg active" role="button">WhatChaWant?</a></span>
+    <span class="centered"><a href="#/which" class="btn btn-info btn-lg active" role="button">Home</a></span>
     <span class="floatRight"><a href="#/who" class="btn btn-danger btn-lg active" role="button">WhatChaGitN?</a></span>
   </div>
   <div class="clear"></div>
 </div>
 
-<div class="container hack-56">
+<div class="container hack-66">
   <div class="row bottom-margin-30" ng-repeat="thing in memberThingsArray">
 
     <div class="col-md-4 centered">
-      <img src="{{thing.image_url}}" height="300">
+      <img src="{{thing.image_url}}" class="gitFit">
     </div>
 
     <div class="col-md-4">
@@ -21,18 +22,18 @@
 
     <div class="col-md-4 centered">
     <!-- if no one has commited to getting the gift yet then a button giving the option to get it shows -->
-      <div ng-if="thing.gitnit_id === ''" class="centerButton">
+      <div ng-if="thing.gitnit_id === ''" class="centerVgitOrBtn">
         <button ng-click="gitnit(thing)" class="btn btn-primary active gitnit">I'm GitNit!</button>
       </div>
       <!-- if someone has committed to getting the gift already then their picture and name show -->
       <div ng-if="thing.gitnit_id !== ''" class="centered">
-        <img src="{{thing.gitnit_profile_image_url}}" width="150" class="round bottom-margin-10">
+        <img src="{{thing.gitnit_profile_image_url}}" class="bigRound">
         <div>
-          {{thing.gitnit_name}}'s GiNit!
+          {{thing.gitnit_name}}'s GitNit!
         </div>
       </div>
       <!-- if the current user is the one that has committed to getting the gift then the option to renege also shows -->
-      <div ng-if="thing.gitnit_id === userID" class="top-margin">
+      <div ng-if="thing.gitnit_id === userID" class="top-margin-20">
         <button ng-click="oops(thing)" class="btn btn-primary active">Oops! Nevermind...</button>
       </div>
     </div>

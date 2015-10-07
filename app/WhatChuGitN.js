@@ -15,11 +15,12 @@ define(function(require) {
         "WhatChuGitNapp.WhichCtrl",
         "WhatChuGitNapp.WhatChuWantCtrl",
         "WhatChuGitNapp.WhatChuGitNWhoCtrl",
-        "WhatChuGitNapp.WhatChuGitNCtrl"
+        "WhatChuGitNapp.WhatChuGitNCtrl",
+        "WhatChuGitNapp.WelcomeCtrl"
         // "WhatChuGitNapp.storage" no longer needed, keeping as an example
       ]
     )
     .config(["$routeProvider", function($routeProvider) {
-      $routeProvider.otherwise({redirectTo:"/which"});
+      $routeProvider.otherwise({redirectTo:"/"});
     }]);
 });

@@ -23,10 +23,9 @@ require.config({
   }
 });
 
-//original, this works
 requirejs(
-  ["authentication", "dependencies"],
-  function(authentication, deps) {
+  ["dependencies"],
+  function(dependencies) {
   }
 );
 

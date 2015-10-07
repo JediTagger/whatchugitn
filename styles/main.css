@@ -4,8 +4,8 @@ body {
 .gitnit {
   padding: 50px; }
 
-.centerButton {
-  margin: 89px 0 0 0; }
+.centerVgitOrBtn {
+  margin: 60px 0 0 0; }
 
 .top-and-bottom-padding {
   padding-top: 10px;
@@ -19,6 +19,9 @@ body {
 
 .top-margin {
   margin-top: 30px; }
+
+.top-margin-20 {
+  margin-top: 20px; }
 
 .left-bottom-margin {
   margin: 0 0 30px 30px; }
@@ -61,7 +64,14 @@ body {
   text-align: center; }
 
 .round {
-  border-radius: 50%; }
+  border-radius: 50%;
+  height: 100px;
+  weight: 100px; }
+
+.bigRound {
+  border-radius: 50%;
+  height: 150px;
+  weight: 150px; }
 
 .centered {
   text-align: center; }
@@ -95,10 +105,27 @@ li {
   background-color: white;
   z-index: 2; }
 
-.hack-245 {
-  margin-top: 245px; }
+.hack-180 {
+  margin-top: 180px; }
 
-.hack-56 {
-  margin-top: 56px; }
+.hack-66 {
+  margin-top: 66px; }
+
+.welcome {
+  font-size: 5em;
+  text-align: center;
+  margin-top: 1em; }
+
+.welcomeBtn {
+  padding: 40px;
+  margin-top: 3em; }
+
+.logOutBtn {
+  padding: 40px;
+  margin-top: 5em; }
+
+.gitFit {
+  max-width: 300px;
+  max-height: 300px; }
 
 /*# sourceMappingURL=main.css.map */

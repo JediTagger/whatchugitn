@@ -8,9 +8,11 @@ define(function(require) {
     var WhatChuWantCtrl = require("controllers/WhatChuWantCtrl");
     var WhatChuGitNWhoCtrl = require("controllers/WhatChuGitNWhoCtrl");
     var WhatChuGitNCtrl = require("controllers/WhatChuGitNCtrl");
-    // var storage = require("factories/storage"); no longer needed, keeping as an example
+    var WelcomeCtrl = require("controllers/WelcomeCtrl");
     var angularFire = require("angularFire");
     var q = require("q");
+    var jquery = require("jquery");
+    // var storage = require("factories/storage"); no longer needed, keeping as an example
 
     var $html = angular.element(document.getElementsByTagName('body')[0]);
     angular.element($html).ready(function() {
